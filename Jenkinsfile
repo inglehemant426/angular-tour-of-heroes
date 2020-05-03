@@ -10,13 +10,13 @@ pipeline {
         
         stage ('build') {
             steps {
-                withMaven(jdk: 'localJDK', maven: 'localmaven') {
+                nodejs('npm') {
                     sh 'npm run build'
                 }
             }
         }
         
-        stage ('test') {
+        /*stage ('test') {
             steps {
                 withMaven(jdk: 'localJDK', maven: 'localmaven') {
                     sh 'npm run test'
@@ -30,6 +30,6 @@ pipeline {
                     sh 'scp -o StrictHostKeyChecking=no */target/*.war ec2-user@172.31.86.233:/var/lib/tomcat/webapps'
                 }
             }
-        }
+        }*/
     }
 }
