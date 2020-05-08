@@ -8,14 +8,21 @@ pipeline {
             }
         }
         
-        stage ('build') {
+        stage ('Install Package.json depedancy') {
             steps {
                 nodejs('npm') {
-                    sh 'npm run build'
+                    sh 'npm install'
                 }
             }
         }
         
+        stage ('build') {
+            steps {
+                nodejs('npm') {
+                    sh 'npm build'
+                }
+            }
+        }
         
     }
 }
